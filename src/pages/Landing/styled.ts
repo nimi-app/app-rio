@@ -1,14 +1,14 @@
 import { styled } from 'styled-components';
 
-import backgroundImageUrl from '../../assets/images/nimi-header-background.jpeg';
+import BackgroundLeft from '../../assets/images/left-background-rio.png';
+import BackgroundRight from '../../assets/images/right-background-rio.png';
 import { NimiSignatureColor } from '../../theme';
 
 export const PageWrapper = styled.div`
   display: flex;
-  /* background-image: url('${backgroundImageUrl}'); */
+
   background-color: #e5e5e5;
-  background-position: center;
-  background-size: cover;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -16,6 +16,12 @@ export const PageWrapper = styled.div`
   width: 100%;
   padding: 0 20px;
   justify-content: space-between;
+  @media (min-width: 1473px) {
+    background-image: url('${BackgroundRight}'), url('${BackgroundLeft}');
+    background-repeat: no-repeat;
+    background-position: right, left;
+    background-size: 42vh;
+  }
 `;
 
 export const Header = styled.header`
