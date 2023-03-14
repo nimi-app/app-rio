@@ -52,6 +52,7 @@ export function Landing() {
           handleOnChange={handleOnChange}
           handleOnFocus={handleShit}
           value={searchValue}
+          isTooShort={true}
           isSearching={isSearching}
           isNameAvailable={undefined}
         />

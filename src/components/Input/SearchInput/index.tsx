@@ -1,11 +1,13 @@
 import { styled } from 'styled-components';
 
 import { SearchInputRing, stateToColor } from './SearchInputRing';
+import { SearchLable } from './SearchLable';
 import SearchIcon from '../../../assets/svg/search.svg';
 
 interface SearchProps {
   isSearching: boolean;
   isNameAvailable: boolean | undefined;
+  isTooShort: boolean | undefined;
   value: string;
   handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -15,6 +17,7 @@ interface SearchProps {
 
 export const SearchInputSelect = ({
   isSearching,
+  isTooShort,
   isNameAvailable,
   value,
   handleOnChange,
@@ -34,6 +37,7 @@ export const SearchInputSelect = ({
           onBlur={handleOnBlur}
           isAvailable={isNameAvailable === true ? true : isNameAvailable === false ? false : undefined}
         />
+        <SearchLable isAvailable={isNameAvailable} isNameAvaliable={isNameAvailable || isTooShort} />
       </SearchInputRing>
     </SearchGroup>
   );
