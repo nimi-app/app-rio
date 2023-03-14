@@ -6,11 +6,16 @@ import { Content, Header, HeaderEyebrow, HeroLead, HeroText, PageWrapper } from 
 import { ReactComponent as EthereumRioLogo } from '../../assets/images/ethereum-rio-big.svg';
 import { RainbowConnectButton } from '../../components/Button/ConnectButton';
 import { Footer } from '../../components/Footer';
+import { SearchInputSelect } from '../../components/Input/SearchInput';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
 export function Landing() {
   const { t } = useTranslation(['common', 'landing']);
+
+  const handleShit = () => {
+    console.log('shti');
+  };
 
   return (
     <PageWrapper>
@@ -26,7 +31,15 @@ export function Landing() {
         <HeaderSubText>
           Your identity across web3, one name for all your crypto addresses, and your decentralised website.
         </HeaderSubText>
-
+        <SearchInputSelect
+          handleKeyDown={handleShit}
+          handleOnBlur={handleShit}
+          handleOnChange={handleShit}
+          handleOnFocus={handleShit}
+          name="mialn"
+          isSearching={true}
+          isNameAvailable={true}
+        />
         <RainbowConnectButton />
       </Content>
       <Footer />
