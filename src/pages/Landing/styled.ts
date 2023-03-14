@@ -5,7 +5,8 @@ import { NimiSignatureColor } from '../../theme';
 
 export const PageWrapper = styled.div`
   display: flex;
-  background-image: url('${backgroundImageUrl}');
+  /* background-image: url('${backgroundImageUrl}'); */
+  background-color: #e5e5e5;
   background-position: center;
   background-size: cover;
   flex-direction: column;
@@ -13,15 +14,28 @@ export const PageWrapper = styled.div`
   justify-content: center;
   min-height: 100vh;
   width: 100%;
+  padding: 0 20px;
+  justify-content: space-between;
 `;
 
 export const Header = styled.header`
-  width: 100%;
   display: flex;
-  margin-top: 60px;
+  margin-top: 24px;
   flex-grow: 0;
-  -webkit-box-pack: center;
+  align-items: center;
   justify-content: center;
+  width: 100%;
+  //select first child
+  > *:first-child {
+    margin-right: 544px;
+  }
+
+  @media (max-width: 1025px) {
+    > *:first-child {
+      margin-right: 0;
+    }
+    justify-content: space-between;
+  }
 `;
 
 export const Content = styled.div`
@@ -29,7 +43,6 @@ export const Content = styled.div`
   flex-direction: column;
   font-style: normal;
   justify-content: center;
-  flex-grow: 1;
   text-align: center;
 `;
 
@@ -57,11 +70,19 @@ export const HeroSub = styled.div`
 `;
 export const HeaderEyebrow = styled.div`
   font-weight: 700;
-  font-size: 15px;
+  font-size: 54px;
   line-height: 117.7%;
   margin-bottom: 16px;
   text-align: center;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #556de7;
+  color: #5625ff;
+  line-height: 72px;
+  /* or 133% */
+
+  text-align: center;
+  letter-spacing: -0.06em;
+  @media (max-width: 725px) {
+    font-size: 36px;
+    line-height: 53px;
+  }
 `;

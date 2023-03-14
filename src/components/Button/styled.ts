@@ -10,12 +10,14 @@ export const StyledButtonStaticBase = styled.div`
   position: relative;
   overflow: hidden;
 
-  background: linear-gradient(111.35deg, #4368ea -25.85%, #c490dd 73.38%);
+  background: #5625ff;
+  opacity: 0.8;
+  border-radius: 8px;
 
   font-family: inherit;
   font-weight: 600;
   font-size: 18px;
-  color: ${({ theme }) => theme.white};
+  color: #ffffff;
 
   user-select: none;
   appearance: none;
@@ -31,6 +33,7 @@ export const StyledButtonBase = styled(StyledButtonStaticBase)`
   /** Animations */
   animation-timing-function: ease-out;
   animation-duration: 300ms;
+  padding: 16px 24px;
 
   /** States */
   &:hover {
@@ -52,7 +55,7 @@ export const StyledButtonBase = styled(StyledButtonStaticBase)`
 `;
 
 export const StyledButtonBaseFrame = styled(StyledButtonBase)`
-  border-radius: 30px;
+  padding: 16px 24px;
 `;
 
 export const StyledButtonFrame = styled(StyledButtonBaseFrame)`

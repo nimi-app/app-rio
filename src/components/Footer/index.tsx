@@ -1,24 +1,14 @@
 import { styled } from 'styled-components';
 
-import GitHubLogo from '../../assets/svg/github-logo.svg';
-import Twitter from '../../assets/svg/twitter-logo.svg';
-import { ExternalLink, FOOTER_HEIGHT, MEDIA_WIDTHS } from '../../theme';
+import { ReactComponent as NimiEnsLogo } from '../../assets/svg/ens-nimi-logo.svg';
+import { FOOTER_HEIGHT, MEDIA_WIDTHS } from '../../theme';
 
 export function Footer() {
   return (
     <Container>
       <Content>
-        <Paragraph>
-          Nimi.eth |&nbsp;<a href="https://amsterdam.ethglobal.com/">ETHAmsterdam 2022 Hackathon</a>&nbsp;winners
-        </Paragraph>
-        <Navigation>
-          <ExternalLink title="Nimi on Twitter" href="https://twitter.com/0xNimi">
-            <img src={Twitter} alt="Twitter Logo" />
-          </ExternalLink>
-          <ExternalLink title="Nimi on GitHub" href="https://github.com/nimi-app">
-            <StyledImg src={GitHubLogo} />
-          </ExternalLink>
-        </Navigation>
+        <Paragraph>Powered by</Paragraph>
+        <NimiEnsLogo />
       </Content>
     </Container>
   );
@@ -26,9 +16,7 @@ export function Footer() {
 
 const Container = styled.footer`
   width: 100%;
-`;
-const StyledImg = styled.img`
-  fill: #1f3e4f;
+  margin-bottom: 60px;
 `;
 
 const Content = styled.div`
@@ -36,20 +24,19 @@ const Content = styled.div`
   width: 100%;
   height: ${FOOTER_HEIGHT};
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   padding: 0 20px;
   margin: 0 auto;
-
-  @media (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `;
 
 const Paragraph = styled.p`
   display: inline-block;
   line-height: 24px;
   text-align: left;
+  color: #9f84ff;
+  margin-bottom: 16px;
 `;
 
 const Navigation = styled.nav`
