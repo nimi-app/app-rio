@@ -3,16 +3,16 @@ import { styled } from 'styled-components';
 
 export const stateToColor = {
   notAvailable: {
-    start: '#FF0000',
-    end: '#FF0000',
+    start: '#4368EA',
+    end: '#C52F1B',
   },
   loading: {
     start: '#4368ea',
     end: '#c490dd',
   },
   available: {
-    start: '#5FAB70',
-    end: '#5FAB70',
+    start: '#4368EA',
+    end: '#1DAF83',
   },
 };
 
@@ -34,7 +34,7 @@ export function SearchInputRing({
       setGradiant((prev) => ({
         ...prev,
         ...stateToColor.available,
-        degree: 0,
+        degree: 113,
       }));
       return;
     } else if (isENSNameAvailable === false) {
@@ -42,7 +42,7 @@ export function SearchInputRing({
       setGradiant((prev) => ({
         ...prev,
         ...stateToColor.notAvailable,
-        degree: 0,
+        degree: 111.35,
       }));
       return;
     }
@@ -107,6 +107,6 @@ export function SearchInputRing({
 
 const StyledSearchInputRing = styled.div`
   background: linear-gradient(111.35deg, #4368ea -25.85%, #c490dd 73.38%);
-  padding: 4px;
+  padding: 3px;
   border-radius: 18px;
 `;

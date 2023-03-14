@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
@@ -13,9 +14,23 @@ import '@rainbow-me/rainbowkit/styles.css';
 export function Landing() {
   const { t } = useTranslation(['common', 'landing']);
 
+  const [searchValue, setSearchValue] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+
   const handleShit = () => {
     console.log('shti');
   };
+  const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log('sheat');
+  };
+  const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextSearchQuery = e.target.value.trim();
+    setSearchValue(nextSearchQuery);
+    setIsSearching(nextSearchQuery.length > 0);
+  }, []);
+  const handleOnBlur = useCallback(() => {
+    setIsSearching(false);
+  }, []);
 
   return (
     <PageWrapper>
@@ -32,13 +47,13 @@ export function Landing() {
           Your identity across web3, one name for all your crypto addresses, and your decentralised website.
         </HeaderSubText>
         <SearchInputSelect
-          handleKeyDown={handleShit}
-          handleOnBlur={handleShit}
-          handleOnChange={handleShit}
+          handleKeyDown={handleOnKeyDown}
+          handleOnBlur={handleOnBlur}
+          handleOnChange={handleOnChange}
           handleOnFocus={handleShit}
-          name="mialn"
-          isSearching={true}
-          isNameAvailable={true}
+          value={searchValue}
+          isSearching={isSearching}
+          isNameAvailable={undefined}
         />
         <RainbowConnectButton />
       </Content>

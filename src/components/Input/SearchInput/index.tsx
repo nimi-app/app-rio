@@ -6,7 +6,7 @@ import SearchIcon from '../../../assets/svg/search.svg';
 interface SearchProps {
   isSearching: boolean;
   isNameAvailable: boolean | undefined;
-  name: string;
+  value: string;
   handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   handleOnFocus: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -16,7 +16,7 @@ interface SearchProps {
 export const SearchInputSelect = ({
   isSearching,
   isNameAvailable,
-  name,
+  value,
   handleOnChange,
   handleKeyDown,
   handleOnFocus,
@@ -27,7 +27,7 @@ export const SearchInputSelect = ({
       <SearchInputRing isSearching={isSearching} isENSNameAvailable={isNameAvailable}>
         <SearchInput
           placeholder="Search for an ENS"
-          value={name}
+          value={value}
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
           onFocus={handleOnFocus}
@@ -41,10 +41,11 @@ export const SearchInputSelect = ({
 
 const SearchGroup = styled.div`
   position: relative;
-  max-width: 450px;
+
   height: 74px;
   background: #fff;
-  padding: 4px;
+  margin-top: 32px;
+  margin-bottom: 61px;
   border-radius: 20px;
   color: #fff;
   & * {
