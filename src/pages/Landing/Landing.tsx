@@ -1,7 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { Content, Header, HeaderEyebrow, PageWrapper } from './styled';
@@ -14,6 +13,10 @@ import '@rainbow-me/rainbowkit/styles.css';
 
 export function Landing() {
   const { t } = useTranslation(['common', 'landing']);
+
+  const onClaimHandler = () => {
+    console.log('here');
+  };
 
   const [searchValue, setSearchValue] = useState('');
   const [isSearching, setIsSearching] = useState(false);
@@ -58,7 +61,7 @@ export function Landing() {
           isSearching={isSearching}
           isNameAvailable={false}
         />
-        <RainbowConnectButton />
+        <RainbowConnectButton onClaimUsername={onClaimHandler} />
       </Content>
       <Footer />
     </PageWrapper>
