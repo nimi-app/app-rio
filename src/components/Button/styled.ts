@@ -34,16 +34,16 @@ export const StyledButtonBase = styled(StyledButtonStaticBase)`
   animation-timing-function: ease-out;
   animation-duration: 300ms;
   padding: 16px 24px;
+  background: #4a1fdc;
 
   /** States */
   &:hover {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)),
-      linear-gradient(111.35deg, #4368ea -25.85%, #c490dd 73.38%);
+    background: #5625ff;
   }
 
   &:active,
   &:focus {
-    background: linear-gradient(111.35deg, #0d42ff -25.85%, #b83af3 73.38%);
+    background: #643efc;
   }
 
   &:disabled {

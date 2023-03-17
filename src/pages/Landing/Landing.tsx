@@ -1,9 +1,10 @@
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useCallback, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import { Content, Header, HeaderEyebrow, HeroLead, HeroText, PageWrapper } from './styled';
+import { Content, Header, HeaderEyebrow, PageWrapper } from './styled';
 import { ReactComponent as EthereumRioLogo } from '../../assets/images/ethereum-rio-big.svg';
 import { RainbowConnectButton } from '../../components/Button/ConnectButton';
 import { Footer } from '../../components/Footer';
@@ -36,7 +37,8 @@ export function Landing() {
     <PageWrapper>
       <Header>
         <EthereumRioLogo />
-        <RainbowConnectButton />
+        {/* <RainbowConnectButton showAvatar={true} /> */}
+        <StyledConnectButton chainStatus={'none'} accountStatus={'full'} showBalance={false} label="Connect Wallet" />
       </Header>
       <Content>
         <HeaderEyebrow>
@@ -52,9 +54,9 @@ export function Landing() {
           handleOnChange={handleOnChange}
           handleOnFocus={handleShit}
           value={searchValue}
-          isTooShort={true}
+          isTooShort={false}
           isSearching={isSearching}
-          isNameAvailable={undefined}
+          isNameAvailable={false}
         />
         <RainbowConnectButton />
       </Content>
@@ -70,5 +72,12 @@ const HeaderSubText = styled.div`
   max-width: 526px;
   @media (max-width: 725px) {
     margin: 0;
+  }
+`;
+
+const StyledConnectButton = styled(ConnectButton)`
+  font-family: ' Space Mono ' !important;
+  div > * {
+    font-family: 'Space Mono' !important;
   }
 `;

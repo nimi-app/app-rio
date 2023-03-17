@@ -25,6 +25,7 @@ export const SearchInputSelect = ({
   handleOnFocus,
   handleOnBlur,
 }: SearchProps) => {
+  const isNameAvaliable = isNameAvailable === true ? true : isNameAvailable === false ? false : undefined;
   return (
     <SearchGroup>
       <SearchInputRing isSearching={isSearching} isENSNameAvailable={isNameAvailable}>
@@ -35,9 +36,10 @@ export const SearchInputSelect = ({
           onKeyDown={handleKeyDown}
           onFocus={handleOnFocus}
           onBlur={handleOnBlur}
-          isAvailable={isNameAvailable === true ? true : isNameAvailable === false ? false : undefined}
+          isAvailable={isNameAvaliable}
         />
-        <SearchLable isAvailable={isNameAvailable} isNameAvaliable={isNameAvailable || isTooShort} />
+        {isNameAvailable === undefined ||
+          (isTooShort === false && <SearchLable isTooShort={isTooShort} isNameAvaliable={isNameAvaliable} />)}
       </SearchInputRing>
     </SearchGroup>
   );
@@ -53,6 +55,7 @@ const SearchGroup = styled.div`
   border-radius: 20px;
   color: #fff;
   & * {
+    font-family: 'Archivo', sans-serif;
     width: 100%;
     height: 100%;
   }
@@ -71,12 +74,8 @@ const SearchInput = styled.input<{
     ${props.isAvailable === true ? `color: ${stateToColor.available.start};` : ''}
     ${props.isAvailable === false ? `color: ${stateToColor.notAvailable.start}` : ''}
     /** Add a gradiant to the placeholder text */
-    ::placeholder {
-      background: linear-gradient(101.14deg, #7e7ddf -1.8%, #bc96d0 73.16%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
+    &::placeholder {
+     color:#DCD7FE
     }
   
     &,

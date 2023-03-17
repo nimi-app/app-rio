@@ -2,8 +2,8 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useTranslation } from 'react-i18next';
 import { styled } from 'styled-components';
 
-import { Web3Avatar } from './Web3Avatar';
 import { StyledButtonBaseFrame } from '../Button/styled';
+import { Web3Avatar } from '../Web3Avatar/Web3Avatar';
 
 export interface WrapperProps {
   isError: boolean;
@@ -12,8 +12,8 @@ export interface WrapperProps {
 const StyledWrapper = styled(StyledButtonBaseFrame)<WrapperProps>(
   ({ isError }) => `
   display: flex;
-  height: 48px;
-  width: 200px;
+  background:#FFFFFF;
+  font-family:Space Mono;
   align-items: center;
   ${isError ? 'background: #EB5757;' : ''}
   `
