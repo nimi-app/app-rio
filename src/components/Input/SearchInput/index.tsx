@@ -7,7 +7,6 @@ import SearchIcon from '../../../assets/svg/search.svg';
 interface SearchProps {
   isSearching: boolean;
   isNameAvailable: boolean | undefined;
-  isTooShort: boolean | undefined;
   value: string;
   handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -17,7 +16,7 @@ interface SearchProps {
 
 export const SearchInputSelect = ({
   isSearching,
-  isTooShort,
+
   isNameAvailable,
   value,
   handleOnChange,
@@ -38,8 +37,7 @@ export const SearchInputSelect = ({
           onBlur={handleOnBlur}
           isAvailable={isNameAvaliable}
         />
-        {isNameAvailable === undefined ||
-          (isTooShort === false && <SearchLable isTooShort={isTooShort} isNameAvaliable={isNameAvaliable} />)}
+        {isNameAvailable !== undefined && <SearchLable isNameAvaliable={isNameAvaliable} />}
       </SearchInputRing>
     </SearchGroup>
   );

@@ -3,7 +3,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { App } from './pages/App';
-import { ReactQueryProvider, WagmiProvider } from './providers';
+import { ReactQueryProvider } from './providers';
+import { WagmiProvider } from './providers/Wagmi/WagmiProvider';
 import { FixedGlobalStyle, ThemedGlobalStyle, ThemeProvider } from './theme';
 
 if ('ethereum' in window) {
