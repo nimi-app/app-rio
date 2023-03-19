@@ -9,7 +9,7 @@ type TemplatePickerButtonProps = {
 
 export function TemplatePickerButton({ selectedTheme, onClick }: TemplatePickerButtonProps) {
   return (
-    <Container onClick={onClick}>
+    <Container disabled={true} onClick={onClick}>
       <ThemeImage src={selectedTheme.logoImage} />
       <ThemeName src={selectedTheme.logoText} />
     </Container>

@@ -1,22 +1,40 @@
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import { ReactComponent as NimiLogo } from '../../assets/svg/nimi-logo-text.svg';
+import { ReactComponent as RioLogo } from '../../assets/images/ethereum-rio-big.svg';
 import { HEADER_HEIGHT, MEDIA_WIDTHS } from '../../theme';
-import { Web3Status } from '../Web3Status';
 
 export function Header() {
   return (
     <Container>
-      <Content>
-        <Link to="/domains/all">
-          <NimiLogo width="100px" height="40px" />
-        </Link>
-        <Web3Status />
-      </Content>
+      <HeaderStyle>
+        <RioLogo />
+        {/* <RainbowConnectButton showAvatar={true} /> */}
+        <ConnectButton chainStatus={'none'} accountStatus={'full'} showBalance={false} label="Connect Wallet" />
+      </HeaderStyle>
     </Container>
   );
 }
+export const HeaderStyle = styled.header`
+  display: flex;
+  margin-top: 24px;
+  flex-grow: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  //select first child
+  > *:first-child {
+    margin-right: 544px;
+  }
+
+  @media (max-width: 1025px) {
+    > *:first-child {
+      margin-right: 0;
+    }
+    justify-content: space-between;
+  }
+`;
 
 const Container = styled.header`
   width: 100%;

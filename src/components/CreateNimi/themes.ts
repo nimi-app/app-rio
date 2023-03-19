@@ -6,6 +6,9 @@ import daivinityPreview from '../../assets/theme/daivinity-preview.png';
 import devconLogoImage from '../../assets/theme/devcon-logo-image.svg';
 import devconLogoText from '../../assets/theme/devcon-logo-text.svg';
 import devconPreview from '../../assets/theme/devcon-preview.png';
+import ethRioLogoImage from '../../assets/theme/ethrio-logo-image.png';
+import ethRioLogoText from '../../assets/theme/ethrio-logo-text.png';
+import ethRioPreview from '../../assets/theme/ethrio-preview.png';
 import ethTLVImage from '../../assets/theme/ethtlv-logo.png';
 import ethTlvPreview from '../../assets/theme/ethtlv-preview.png';
 import ethTlVText from '../../assets/theme/ethtlv-text.svg';
@@ -47,6 +50,12 @@ export const themes: Record<NimiCuratedTheme, ThemeAssets> = {
     logoImage: ethTLVImage,
     logoText: ethTlVText,
     preview: ethTlvPreview,
+  },
+  [NimiThemeType.ETH_RIO_2023]: {
+    type: NimiThemeType.ETH_RIO_2023,
+    logoImage: ethRioLogoImage,
+    logoText: ethRioLogoText,
+    preview: ethRioPreview,
   },
   // [NimiThemeType.INFINITE]: {
   //   type: NimiThemeType.RAAVE,

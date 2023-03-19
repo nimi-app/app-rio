@@ -108,5 +108,6 @@ export function SearchInputRing({
 const StyledSearchInputRing = styled.div`
   background: linear-gradient(111.35deg, #4368ea -25.85%, #c490dd 73.38%);
   padding: 3px;
+
   border-radius: 18px;
 `;

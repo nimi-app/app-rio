@@ -37,6 +37,7 @@ export const SearchInputSelect = ({
           onBlur={handleOnBlur}
           isAvailable={isNameAvaliable}
         />
+
         {isNameAvailable !== undefined && <SearchLable isNameAvaliable={isNameAvaliable} />}
       </SearchInputRing>
     </SearchGroup>

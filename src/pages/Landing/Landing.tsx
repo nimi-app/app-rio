@@ -1,11 +1,11 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { Content, Header, HeaderEyebrow, PageWrapper } from './styled';
 import { ReactComponent as EthereumRioLogo } from '../../assets/images/ethereum-rio-big.svg';
-import RioBackground from '../../assets/images/rio-background.jpg';
 import { RainbowConnectButton } from '../../components/Button/ConnectButton';
 import { Footer } from '../../components/Footer';
 import { SearchInputSelect } from '../../components/Input/SearchInput';
@@ -14,13 +14,15 @@ import '@rainbow-me/rainbowkit/styles.css';
 
 export function Landing() {
   const { t } = useTranslation(['common', 'landing']);
-
-  const onClaimHandler = () => {
-    console.log('here');
-  };
+  const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+
+  const onClaimHandler = () => {
+    console.log('here');
+    navigate(`domains/${searchValue}`);
+  };
 
   const handleShit = () => {
     console.log('shti');

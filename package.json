@@ -9,7 +9,7 @@
     "@ethersproject/contracts": "^5.7.0",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.8.10",
-    "@nimi.io/card": "nimi-app/card#0.12.2",
+    "@nimi.io/card": "nimi-app/card#a9eef8ec9bc031d50f77305a290f1beab65b4c86",
     "@rainbow-me/rainbowkit": "^0.8.0",
     "@tanstack/react-query": "^4.16.1",
     "@testing-library/jest-dom": "^5.16.4",

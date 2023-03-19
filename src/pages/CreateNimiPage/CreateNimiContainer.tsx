@@ -1,3 +1,5 @@
+import { Nimi, NimiThemeType } from '@nimi.io/card';
+
 import { useIPNSData } from '../../api/RestAPI/hooks/useIPNSData';
 import { Container } from '../../components/Container';
 import { CreateNimi } from '../../components/CreateNimi';
@@ -15,17 +17,27 @@ export function CreateNimiContainer({ ensName }: CreateNimiContainerProps) {
   const { account } = useRainbow();
 
   //check if user has certain poap
-  const { avaliableThemes, isLoading: isThemeLoading, hasPoaps } = useAvaliableThemesFromPoaps(account);
+  const { isLoading: isThemeLoading, hasPoaps } = useAvaliableThemesFromPoaps(account);
 
-  //check for users current Nimi profile data or else adds data generated from ens
-  const { data: initialNimi, loading: initialNimiLoading } = useInitialtNimiData({
-    ensName,
-    account,
-  });
+  // //check for users current Nimi profile data or else adds data generated from ens
+  // const { data: initialNimi, loading: initialNimiLoading } = useInitialtNimiData({
+  //   ensName,
+  //   account,
+  // });
 
   const { data: IPNSDATA, isLoading: IPNSLOADING } = useIPNSData(ensName);
 
-  if (initialNimiLoading || initialNimi === undefined || isThemeLoading || IPNSLOADING) {
+  const nimi: Nimi = {
+    ensName,
+    displayName: ensName,
+    addresses: [],
+    ensAddress: account!,
+    links: [],
+    widgets: [],
+    theme: { type: NimiThemeType.ETH_RIO_2023 },
+  };
+
+  if (isThemeLoading || IPNSLOADING) {
     return <Spinner />;
   }
 
@@ -34,8 +46,8 @@ export function CreateNimiContainer({ ensName }: CreateNimiContainerProps) {
       <CreateNimi
         ensAddress={account as string}
         ensName={ensName as string}
-        availableThemes={avaliableThemes}
-        initialNimi={insertPoapWidgetIntoNimi(initialNimi, hasPoaps, account)}
+        availableThemes={[NimiThemeType.ETH_RIO_2023]}
+        initialNimi={insertPoapWidgetIntoNimi(nimi, hasPoaps, account)}
         nimiIPNSKey={IPNSDATA?.ipns}
       />
     </Container>
