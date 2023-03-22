@@ -5,7 +5,6 @@ import { Container } from '../../components/Container';
 import { CreateNimi } from '../../components/CreateNimi';
 import { Spinner } from '../../components/Spinner';
 import { useAvaliableThemesFromPoaps } from '../../hooks/useAvaliableThemesFromPoaps';
-import { useInitialtNimiData } from '../../hooks/useDefaultNimiData';
 import { useRainbow } from '../../hooks/useRainbow';
 import { insertPoapWidgetIntoNimi } from '../../utils';
 

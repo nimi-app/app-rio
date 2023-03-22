@@ -1,4 +1,5 @@
 import { Chain, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { useEffect } from 'react';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
 import { CreateNimiPage } from './CreateNimiPage/CreateNimiPage';

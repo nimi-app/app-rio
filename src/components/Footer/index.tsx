@@ -16,7 +16,9 @@ export function Footer() {
 
 const Container = styled.footer`
   width: 100%;
-  margin-bottom: 60px;
+
+  margin-bottom: 20px;
+  margin-top: 91px;
 `;
 
 const Content = styled.div`

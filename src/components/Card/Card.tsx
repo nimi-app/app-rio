@@ -12,6 +12,10 @@ export const Card = styled.div<CardProps>(
   box-shadow: 0px 5px 24px rgba(138, 143, 234, 0.12);
   backdrop-filter: blur(20px);
   border-radius: 25px;
+  *  {
+    font-family:Archivo;
+  }
+  
 `
 );
 

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { ReactComponent as CloseSvg } from '../../assets/svg/close-icon.svg';
@@ -107,6 +108,9 @@ const Backdrop = styled.div`
   padding-top: 40px;
   padding-left: 16px;
   padding-right: 16px;
+  * {
+    font-family: 'Archivo';
+  }
 `;
 
 const StyledModal = styled(motion.div)<{ maxWidth: string; maxHeight: string }>`
