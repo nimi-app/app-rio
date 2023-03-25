@@ -29,7 +29,7 @@ export const SearchInputSelect = ({
     <SearchGroup>
       <SearchInputRing isSearching={isSearching} isENSNameAvailable={isNameAvailable}>
         <SearchInput
-          placeholder="Search for an ENS"
+          placeholder="Username.Ethbr"
           value={value}
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
@@ -37,6 +37,12 @@ export const SearchInputSelect = ({
           onBlur={handleOnBlur}
           isAvailable={isNameAvaliable}
         />
+        {value.length !== 0 && (
+          <SearchSuggestion>
+            {value}
+            <Placeholder placeholder=" .Ethbr" disabled={true} />
+          </SearchSuggestion>
+        )}
 
         {isNameAvailable !== undefined && <SearchLable isNameAvaliable={isNameAvaliable} />}
       </SearchInputRing>
@@ -66,6 +72,7 @@ const SearchInput = styled.input<{
   (props) => `
     background-color: #ffffff;
     font-weight: 500;
+     vertical-align: top;
     font-size: 20px;
     padding: 0px 40px;
     color: #bc96d0;
@@ -98,3 +105,43 @@ const SearchInput = styled.input<{
     }
   `
 );
+
+const SearchSuggestion = styled.div`
+  color: transparent;
+  display: flex;
+  flex-flow: row nowrap;
+  line-height: 3em;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1px;
+  right: 1em;
+  padding: 0 0 0 1em;
+  pointer-events: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: pre;
+  font-size: 20px;
+  font-weight: 500;
+`;
+const Placeholder = styled.input`
+  background: 0 0;
+  border-color: transparent;
+  border-left: 0;
+
+  height: 100%;
+  padding: 0;
+  vertical-align: top;
+  width: 100%;
+
+  opacity: 1;
+  &::placeholder {
+    font-weight: 500;
+    font-size: 24px;
+
+    color: #dcd7fe;
+  }
+`;

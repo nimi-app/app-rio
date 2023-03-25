@@ -60,6 +60,7 @@ export function Landing() {
           isSearching={isSearching}
           isNameAvailable={false}
         />
+
         <RainbowConnectButton onClaimUsername={onClaimHandler} />
       </Content>
       <Footer />
@@ -75,8 +76,4 @@ const HeaderSubText = styled.div`
   @media (max-width: 725px) {
     margin: 0;
   }
-`;
-
-const StyledConnectButton = styled(ConnectButton)`
-  font-family: ' Space Mono ' !important;
 `;
