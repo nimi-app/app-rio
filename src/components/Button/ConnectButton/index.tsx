@@ -1,8 +1,9 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { PropsWithChildren } from 'react';
 
 import { Button } from '../Button';
 
-export const RainbowConnectButton = ({ onClaimUsername }) => {
+export const RainbowConnectButton = ({ children }: PropsWithChildren) => {
   return (
     <ConnectButton.Custom>
       {({ account, chain, openConnectModal, openChainModal, authenticationStatus, mounted }) => {
@@ -32,7 +33,7 @@ export const RainbowConnectButton = ({ onClaimUsername }) => {
                   </Button>
                 );
               } else {
-                return <Button onClick={onClaimUsername}>Claim Username</Button>;
+                return <>{children}</>;
               }
             })()}
           </div>

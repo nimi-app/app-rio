@@ -1,11 +1,11 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { Content, HeaderEyebrow, PageWrapper } from './styled';
-import { ReactComponent as EthereumRioLogo } from '../../assets/images/ethereum-rio-big.svg';
+import { useNimiIdAvalibility } from '../../api/RestAPI/hooks/useNimiIdAvalibility';
+import { Button } from '../../components/Button';
 import { RainbowConnectButton } from '../../components/Button/ConnectButton';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
@@ -20,10 +20,13 @@ export function Landing() {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
-  const [isSearching, setIsSearching] = useState(false);
+
+  const { data: isNameAvaliable, isLoading } = useNimiIdAvalibility(searchValue);
+
+  console.log(isNameAvaliable, 'isNameThere');
+  console.log('isLoading', isLoading);
 
   const onClaimHandler = () => {
-    console.log('here');
     navigate(`domains/${searchValue}.${RIO_SUFIX}`);
   };
 
@@ -38,11 +41,10 @@ export function Landing() {
     const regex = /^[a-zA-Z]+$/;
     if (nextSearchQuery === '' || regex.test(nextSearchQuery)) {
       setSearchValue(nextSearchQuery);
-      setIsSearching(nextSearchQuery.length > 0);
     }
   }, []);
   const handleOnBlur = useCallback(() => {
-    setIsSearching(false);
+    console.log('onBlur');
   }, []);
 
   return (
@@ -62,11 +64,15 @@ export function Landing() {
           handleOnChange={handleOnChange}
           handleOnFocus={handleShit}
           value={searchValue}
-          isSearching={isSearching}
-          isNameAvailable={false}
+          isSearching={isLoading}
+          isNameAvailable={isNameAvaliable}
         />
 
-        <RainbowConnectButton onClaimUsername={onClaimHandler} />
+        <RainbowConnectButton>
+          <Button onClick={onClaimHandler} disabled={!isNameAvaliable}>
+            Claim username
+          </Button>
+        </RainbowConnectButton>
       </Content>
       <Footer />
     </PageWrapper>
