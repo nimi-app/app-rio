@@ -31,11 +31,26 @@ const updateNimiIPNS = async (params: UpdateNimiViaIPNSParams) => {
   return data.data;
 };
 
+interface PublishIpfsParams {
+  nimi: Nimi;
+  chainId: number;
+}
+export const publishNimiIpfs = async (params: PublishIpfsParams) => {
+  const { data } = await getNimiAPIClient().post<{
+    data: { cidv1: string };
+  }>('/nimi/publish', params);
+  return data.data;
+};
+
 /**
  * Returns mutation for getting IPNS hash
  */
 export function usePublishNimiIPNS() {
   return useMutation(['publishNimiIPNS'], publishedNimiIPNS);
+}
+
+export function usePublishNimiIpfs() {
+  return useMutation(['publishIpfs'], publishNimiIpfs);
 }
 
 /**

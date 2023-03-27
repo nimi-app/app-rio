@@ -1,6 +1,5 @@
 import { Nimi, NimiThemeType } from '@nimi.io/card';
 
-import { useIPNSData } from '../../api/RestAPI/hooks/useIPNSData';
 import { Container } from '../../components/Container';
 import { CreateNimi } from '../../components/CreateNimi';
 import { Spinner } from '../../components/Spinner';
@@ -24,8 +23,6 @@ export function CreateNimiContainer({ ensName }: CreateNimiContainerProps) {
   //   account,
   // });
 
-  const { data: IPNSDATA, isLoading: IPNSLOADING } = useIPNSData(ensName);
-
   const nimi: Nimi = {
     ensName,
     displayName: ensName,
@@ -36,7 +33,7 @@ export function CreateNimiContainer({ ensName }: CreateNimiContainerProps) {
     theme: { type: NimiThemeType.ETH_RIO_2023 },
   };
 
-  if (isThemeLoading || IPNSLOADING) {
+  if (isThemeLoading) {
     return <Spinner />;
   }
 
@@ -47,7 +44,6 @@ export function CreateNimiContainer({ ensName }: CreateNimiContainerProps) {
         ensName={ensName as string}
         availableThemes={[NimiThemeType.ETH_RIO_2023]}
         initialNimi={insertPoapWidgetIntoNimi(nimi, hasPoaps, account)}
-        nimiIPNSKey={IPNSDATA?.ipns}
       />
     </Container>
   );

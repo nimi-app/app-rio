@@ -18,9 +18,7 @@ export enum PublishNimiPageStep {
 
 export interface PublishNimiModalProps {
   stepsCompleted: PublishNimiPageStep[];
-  // Vault creation
-  setContentHashTransaction?: ContractTransaction;
-  setContentHashReceipt?: ContractReceipt;
+
   onClose: () => void;
   isPublishing: boolean;
   isPublished: boolean;
@@ -42,25 +40,12 @@ export function PublishNimiModal({
   ipfsHash,
   ensName,
   publishError,
-  setContentHashTransaction,
-  setContentHashReceipt,
   isPublished,
-  chainId,
 }: PublishNimiModalProps) {
   const { t } = useTranslation(['common', 'nimi']);
 
   const isBundleNimiPageComplete =
     ipfsHash && stepsCompleted.includes(PublishNimiPageStep.BUNDLE_NIMI_PAGE) ? true : false;
-
-  // Set content hash transaction link
-  const setContentHashTransactionLink = setContentHashTransaction
-    ? getEtherscanExplorerLink(chainId, setContentHashTransaction.hash, 'transaction')
-    : undefined;
-
-  // Last step is to set the content hash
-  // If the content hash is already set to a Nimi IPNS, we don't need to set it again
-  const isContentHashSet =
-    setContentHashReceipt && stepsCompleted.includes(PublishNimiPageStep.SET_CONTENT_HASH) ? true : false;
 
   // If there is an error, show it
   // @todo: Improve error handling and show more specific errors in each step
@@ -94,17 +79,7 @@ export function PublishNimiModal({
         ) : (
           <Step isBusy={true}>Bundling your Nimi page 👀</Step>
         )}
-        {isContentHashSet ? (
-          <Step {...externalLinkProps} href={setContentHashTransactionLink} isSuccess={true}>
-            Updated ENS records for {ensName} 🎉
-          </Step>
-        ) : setContentHashTransaction ? (
-          <Step {...externalLinkProps} href={setContentHashTransactionLink} isBusy={true}>
-            Updating ENS records for {ensName} 👀
-          </Step>
-        ) : (
-          <Step as="div">Update ENS records for {ensName}</Step>
-        )}
+        (<Step as="div">Update NIMI ID records for {ensName}</Step>)
         {isPublished ? (
           <Step isBusy={true} target="_blank" rel="noreferrer" href={`https://${ensName}.limo`}>
             Your Nimi has been published

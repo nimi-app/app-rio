@@ -6,6 +6,7 @@ export interface RegisterIdParams {
   name: string;
   registrant: string;
   signature: string;
+  claimCode: string;
 }
 
 interface PublishNimiIPNSResponse {
@@ -24,4 +25,20 @@ const registerId = async (params: RegisterIdParams) => {
  */
 export function useRegisterNimiId() {
   return useMutation(['registerNimiId'], registerId);
+}
+
+interface UpdateContentParams {
+  contentHash: string;
+  signature: string;
+  domainsNameHash: string;
+}
+
+const updateContent = async ({ contentHash, signature, domainsNameHash }: UpdateContentParams) => {
+  const { data } = await getNimiIdApiClient().put<{
+    data: any;
+  }>(`/domains/${domainsNameHash}/contentHash`, { signature, contentHash });
+  return data.data;
+};
+export function useSetIdContent() {
+  return useMutation(['updateNimiIdContent'], updateContent);
 }

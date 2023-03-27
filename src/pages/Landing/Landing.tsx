@@ -37,16 +37,18 @@ export function Landing() {
     setSpinner(true);
     try {
       const rioName = `${searchValue}.${RIO_SUFIX}`;
-      if (account) {
-        const signature = await signMessage({
-          message: JSON.stringify({ name: rioName, registrant: account }),
-        });
-        const data = await mutateAsync({
-          name: rioName,
-          registrant: account,
-          signature: signature,
-        });
-        console.log('data', data);
+      if (account && claimCode) {
+        // const signature = await signMessage({
+        //   message: JSON.stringify({ name: rioName, registrant: account, claimCode }),
+        // });
+        // const data = await mutateAsync({
+        //   name: rioName,
+        //   registrant: account,
+        //   signature: signature,
+        //   claimCode,
+        // });
+        // console.log('data', data);
+
         navigate(`domains/${searchValue}.${RIO_SUFIX}`);
       }
     } catch (e) {
@@ -84,7 +86,7 @@ export function Landing() {
         />
 
         <RainbowConnectButton>
-          <Button onClick={onClaimHandler} disabled={!isNameAvaliable || claimCodeData?.data.valid}>
+          <Button onClick={onClaimHandler} disabled={!isNameAvaliable || !claimCodeData?.data.valid}>
             {claimCode === undefined ? 'No claim code' : !claimCodeData?.data.valid ? 'Invalid code' : 'Claim username'}
           </Button>
         </RainbowConnectButton>
