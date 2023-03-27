@@ -16,11 +16,11 @@ export const SearchInputSelect = ({ isSearching, isNameAvailable, value, handleO
   return (
     <SearchGroup>
       <SearchInputRing isSearching={isSearching} isENSNameAvailable={isNameAvailable}>
-        <SearchInput placeholder="Username.Ethbr.Co" value={value} onChange={handleOnChange} />
+        <SearchInput placeholder="username.ethbr.co" value={value} onChange={handleOnChange} />
         {value.length !== 0 && (
           <SearchSuggestion>
             {value}
-            <Placeholder placeholder=".Ethbr.co" disabled={true} />
+            <Placeholder placeholder=".ethbr.co" disabled={true} />
           </SearchSuggestion>
         )}
 

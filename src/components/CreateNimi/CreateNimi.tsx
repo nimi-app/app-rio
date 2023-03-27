@@ -12,7 +12,7 @@ import { PoapField } from './partials/PoapField';
 import { BlockchainAddresses, FormItem, InnerWrapper, MainContent, PageSectionTitle } from './styled';
 import { themes } from './themes';
 import { usePublishNimiIpfs } from '../../api/RestAPI/hooks/usePublishNimiIPNS';
-import { useSetIdContent } from '../../api/RestAPI/hooks/useRegisterNimiId';
+import { useSetIdContentHash } from '../../api/RestAPI/hooks/useRegisterNimiId';
 import { useENSPublicResolverContract } from '../../hooks/useENSPublicResolverContract';
 import { useRainbow } from '../../hooks/useRainbow';
 import {
@@ -54,7 +54,7 @@ export function CreateNimi({ ensAddress, ensName, availableThemes, initialNimi }
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
   const { modalOpened, ModalTypes, openModal, closeModal, showSpinner } = useUserInterface();
   const { mutateAsync: publishNimiAsync } = usePublishNimiIpfs();
-  const { mutateAsync: updateNimiId } = useSetIdContent();
+  const { mutateAsync: updateNimiId } = useSetIdContentHash();
   // const { mutateAsync: updateNimiAsync } = useUpdateNimiIPNS();
   const [isPublishingNimi, setIsPublishingNimi] = useState(false);
   const [isNimiPublished, setIsNimiPublished] = useState(false);
@@ -117,29 +117,32 @@ export function CreateNimi({ ensAddress, ensName, availableThemes, initialNimi }
       }
 
       // Publishing a new Nimi IPNS record
-      console.log('nimi', nimi);
-      const { cidv1 } = await publishNimiAsync({
+      debug('nimi', nimi);
+      const { cid } = await publishNimiAsync({
         nimi,
         chainId: chainId as number,
       });
 
-      if (!cidv1) {
+      if (!cid) {
         throw new Error('No CID returned from publishNimiViaIPNS');
       }
 
-      const contentHash = `ipfs://${cidv1}`;
+      const contentHash = `ipfs://${cid}`;
       const newContentHashEncoded = encodeContenthash(contentHash).encoded as unknown as string;
       const signature = await signMessage({
         message: JSON.stringify({ contentHash: newContentHashEncoded }),
       });
-      console.log('signature', signature);
-      console.log('contentHash', contentHash);
+      debug({ signature, contentHash });
       const domainsNameHash = ensNameHash(nimi.displayName);
 
-      const mutation = await updateNimiId({ contentHash, signature, domainsNameHash });
-      console.log('mutation', mutation);
+      const mutation = await updateNimiId({
+        contenthash: newContentHashEncoded,
+        signature,
+        domainsNameHash,
+      });
+      debug('mutation', mutation);
       setStepsCompleted([PublishNimiPageStep.BUNDLE_NIMI_PAGE]);
-      setPublishNimiResponseIpfsHash(cidv1);
+      setPublishNimiResponseIpfsHash(cid);
 
       setStepsCompleted((stepsCompleted) => [...stepsCompleted, PublishNimiPageStep.SET_CONTENT_HASH]);
       setIsNimiPublished(true);

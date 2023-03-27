@@ -37,7 +37,7 @@ interface PublishIpfsParams {
 }
 export const publishNimiIpfs = async (params: PublishIpfsParams) => {
   const { data } = await getNimiAPIClient().post<{
-    data: { cidv1: string };
+    data: { cid: string };
   }>('/nimi/publish', params);
   return data.data;
 };

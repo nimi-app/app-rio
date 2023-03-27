@@ -33,7 +33,7 @@ export function getNimiAPIClient() {
 
 export function getNimiIdApiClient() {
   return axios.create({
-    baseURL: 'http://api.nimi.id',
+    baseURL: 'https://api.nimi.id',
   });
 }
 

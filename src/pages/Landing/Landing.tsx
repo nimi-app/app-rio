@@ -36,19 +36,18 @@ export function Landing() {
   const onClaimHandler = async () => {
     setSpinner(true);
     try {
-      const rioName = `${searchValue}.${RIO_SUFIX}`;
+      const name = `${searchValue}.${RIO_SUFIX}`;
       if (account && claimCode) {
-        // const signature = await signMessage({
-        //   message: JSON.stringify({ name: rioName, registrant: account, claimCode }),
-        // });
-        // const data = await mutateAsync({
-        //   name: rioName,
-        //   registrant: account,
-        //   signature: signature,
-        //   claimCode,
-        // });
-        // console.log('data', data);
-
+        const signature = await signMessage({
+          message: JSON.stringify({ name, registrant: account, claimCode }),
+        });
+        const data = await mutateAsync({
+          name,
+          registrant: account,
+          signature: signature,
+          claimCode,
+        });
+        console.log('data', data);
         navigate(`domains/${searchValue}.${RIO_SUFIX}`);
       }
     } catch (e) {

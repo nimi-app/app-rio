@@ -28,17 +28,18 @@ export function useRegisterNimiId() {
 }
 
 interface UpdateContentParams {
-  contentHash: string;
+  contenthash: string;
   signature: string;
   domainsNameHash: string;
 }
 
-const updateContent = async ({ contentHash, signature, domainsNameHash }: UpdateContentParams) => {
+const updateContent = async ({ contenthash, signature, domainsNameHash }: UpdateContentParams) => {
   const { data } = await getNimiIdApiClient().put<{
     data: any;
-  }>(`/domains/${domainsNameHash}/contentHash`, { signature, contentHash });
+  }>(`/domains/${domainsNameHash}/contenthash`, { signature, contenthash });
   return data.data;
 };
-export function useSetIdContent() {
+
+export function useSetIdContentHash() {
   return useMutation(['updateNimiIdContent'], updateContent);
 }

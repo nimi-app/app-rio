@@ -79,7 +79,7 @@ export function PublishNimiModal({
         ) : (
           <Step isBusy={true}>Bundling your Nimi page 👀</Step>
         )}
-        (<Step as="div">Update NIMI ID records for {ensName}</Step>)
+        {/* <Step as="div">Update NIMI ID records for {ensName}</Step> */}
         {isPublished ? (
           <Step isBusy={true} target="_blank" rel="noreferrer" href={`https://${ensName}.limo`}>
             Your Nimi has been published
