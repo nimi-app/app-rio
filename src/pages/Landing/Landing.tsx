@@ -13,6 +13,8 @@ import { SearchInputSelect } from '../../components/Input/SearchInput';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
+export const RIO_SUFIX = 'ethbr.co';
+
 export function Landing() {
   const { t } = useTranslation(['common', 'landing']);
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ export function Landing() {
 
   const onClaimHandler = () => {
     console.log('here');
-    navigate(`domains/${searchValue}.ethereum.rio`);
+    navigate(`domains/${searchValue}.${RIO_SUFIX}`);
   };
 
   const handleShit = () => {
@@ -33,8 +35,11 @@ export function Landing() {
   };
   const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const nextSearchQuery = e.target.value.trim();
-    setSearchValue(nextSearchQuery);
-    setIsSearching(nextSearchQuery.length > 0);
+    const regex = /^[a-zA-Z]+$/;
+    if (nextSearchQuery === '' || regex.test(nextSearchQuery)) {
+      setSearchValue(nextSearchQuery);
+      setIsSearching(nextSearchQuery.length > 0);
+    }
   }, []);
   const handleOnBlur = useCallback(() => {
     setIsSearching(false);
