@@ -12,7 +12,9 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Landing />,
+    children: [{ path: ':claimCode', element: <Landing /> }],
   },
+
   {
     path: 'domains',
     element: <PageLayout />,

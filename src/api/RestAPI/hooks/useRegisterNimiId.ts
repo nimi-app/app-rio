@@ -9,8 +9,7 @@ export interface RegisterIdParams {
 }
 
 interface PublishNimiIPNSResponse {
-  cid: string;
-  ipns: string;
+  nimiId: any;
 }
 
 const registerId = async (params: RegisterIdParams) => {
