@@ -29,7 +29,7 @@ export const SearchInputSelect = ({
     <SearchGroup>
       <SearchInputRing isSearching={isSearching} isENSNameAvailable={isNameAvailable}>
         <SearchInput
-          placeholder="Username.Ethbr"
+          placeholder="Username.Ethbr.Co"
           value={value}
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
@@ -40,7 +40,7 @@ export const SearchInputSelect = ({
         {value.length !== 0 && (
           <SearchSuggestion>
             {value}
-            <Placeholder placeholder=" .Ethbr" disabled={true} />
+            <Placeholder placeholder=".Ethbr.co" disabled={true} />
           </SearchSuggestion>
         )}
 
@@ -76,13 +76,9 @@ const SearchInput = styled.input<{
     font-size: 20px;
     padding: 0px 40px;
     color: #bc96d0;
+    font-family:Archivo;
     transition: all 0.2s ease-in-out;
-    ${props.isAvailable === true ? `color: ${stateToColor.available.start};` : ''}
-    ${props.isAvailable === false ? `color: ${stateToColor.notAvailable.start}` : ''}
-    /** Add a gradiant to the placeholder text */
-    &::placeholder {
-     color:#DCD7FE
-    }
+  color:transperent;
   
     &,
     &:focus,
@@ -103,6 +99,10 @@ const SearchInput = styled.input<{
       padding: 0px 20px;
       background-position: -20px center;
     }
+
+    &::placeholder {
+      color:#DCD7FE;
+     }
   `
 );
 
@@ -113,7 +113,7 @@ const SearchSuggestion = styled.div`
   line-height: 3em;
   overflow: hidden;
   position: absolute;
-  top: 0;
+  top: 2px;
   bottom: 0;
   left: 1px;
   right: 1em;
@@ -140,7 +140,7 @@ const Placeholder = styled.input`
   opacity: 1;
   &::placeholder {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
 
     color: #dcd7fe;
   }
