@@ -1,33 +1,58 @@
+import { signMessage } from '@wagmi/core';
 import { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { Content, HeaderEyebrow, PageWrapper } from './styled';
 import { useNimiIdAvalibility } from '../../api/RestAPI/hooks/useNimiIdAvalibility';
+import { useRegisterNimiId } from '../../api/RestAPI/hooks/useRegisterNimiId';
 import { Button } from '../../components/Button';
 import { RainbowConnectButton } from '../../components/Button/ConnectButton';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { SearchInputSelect } from '../../components/Input/SearchInput';
-
 import '@rainbow-me/rainbowkit/styles.css';
+import { Spinner } from '../../components/Spinner';
+import { useRainbow } from '../../hooks/useRainbow';
+import { useUserInterface } from '../../services/useUserInterface';
 
 export const RIO_SUFIX = 'ethbr.co';
 
 export function Landing() {
-  const { t } = useTranslation(['common', 'landing']);
   const navigate = useNavigate();
+  const { account } = useRainbow();
 
   const [searchValue, setSearchValue] = useState('');
+  const { setSpinner, isSpinnerShown } = useUserInterface();
 
   const { data: isNameAvaliable, isLoading } = useNimiIdAvalibility(searchValue);
+
+  const { mutateAsync } = useRegisterNimiId();
 
   console.log(isNameAvaliable, 'isNameThere');
   console.log('isLoading', isLoading);
 
-  const onClaimHandler = () => {
-    navigate(`domains/${searchValue}.${RIO_SUFIX}`);
+  const onClaimHandler = async () => {
+    setSpinner(true);
+    try {
+      const rioName = `${searchValue}.${RIO_SUFIX}`;
+      if (account) {
+        const signature = await signMessage({
+          message: JSON.stringify({ name: rioName, registrant: account }),
+        });
+        const data = await mutateAsync({
+          name: rioName,
+          registrant: account,
+          signature: signature,
+        });
+        console.log('data', data);
+        navigate(`domains/${searchValue}.${RIO_SUFIX}`);
+      }
+    } catch (e) {
+      console.log('error');
+    } finally {
+      setSpinner(false);
+    }
   };
 
   const handleShit = () => {
@@ -49,6 +74,7 @@ export function Landing() {
 
   return (
     <PageWrapper>
+      {isSpinnerShown && <Spinner />}
       <Header />
       <Content>
         <HeaderEyebrow>
