@@ -1,13 +1,4 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import {
-  argentWallet,
-  coinbaseWallet,
-  injectedWallet,
-  ledgerWallet,
-  metaMaskWallet,
-  rainbowWallet,
-  walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
 import { PropsWithChildren } from 'react';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -25,20 +16,7 @@ export const { chains, provider } = configureChains(SUPPORT_CHAINS_RAINBOW_KIT, 
   publicProvider(),
 ]);
 
-const env = process.env.REACT_APP_EVENT_NAME;
-
-const wallets =
-  env === 'RIO'
-    ? [rainbowWeb3AuthConnector({ chains }) as any]
-    : [
-        metaMaskWallet({ chains }),
-        argentWallet({ chains }),
-        coinbaseWallet({ appName: 'Nimi', chains }),
-        rainbowWallet({ chains }),
-        ledgerWallet({ chains }),
-        injectedWallet({ chains }),
-        walletConnectWallet({ chains }),
-      ];
+const wallets = [rainbowWeb3AuthConnector({ chains }) as any];
 
 const connectors = connectorsForWallets([
   {
