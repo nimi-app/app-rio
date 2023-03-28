@@ -80,6 +80,9 @@ const SearchInput = styled.input`
   &::placeholder {
     color: #dcd7fe;
   }
+  .placeholder {
+    color: #dcd7fe;
+  }
 `;
 
 const SearchSuggestion = styled.div`
@@ -118,6 +121,11 @@ const Placeholder = styled.input`
     font-weight: 500;
     font-size: 20px;
 
+    color: #dcd7fe;
+  }
+  .placeholder {
+    font-weight: 500;
+    font-size: 20px;
     color: #dcd7fe;
   }
 `;
