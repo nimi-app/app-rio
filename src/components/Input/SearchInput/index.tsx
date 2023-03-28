@@ -20,7 +20,7 @@ export const SearchInputSelect = ({ isSearching, isNameAvailable, value, handleO
         {value.length !== 0 && (
           <SearchSuggestion>
             {value}
-            <Placeholder placeholder=".ethbr.co" disabled={true} />
+            <Placeholder placeholder=".ethbr.com" disabled={true} />
           </SearchSuggestion>
         )}
 
@@ -92,9 +92,9 @@ const SearchSuggestion = styled.div`
   line-height: 3em;
   overflow: hidden;
   position: absolute;
-  top: 2px;
+  top: 0px;
   bottom: 0;
-  left: 1px;
+  left: 2px;
   right: 1em;
   padding: 0 0 0 1em;
   pointer-events: none;
@@ -105,6 +105,16 @@ const SearchSuggestion = styled.div`
   white-space: pre;
   font-size: 20px;
   font-weight: 500;
+
+  &::placeholder {
+    color: #dcd7fe !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+  }
+  .placeholder {
+    font-weight: 500 !important;
+    font-size: 20px !important;
+  }
 `;
 const Placeholder = styled.input`
   background: 0 0;
@@ -115,17 +125,19 @@ const Placeholder = styled.input`
   padding: 0;
   vertical-align: top;
   width: 100%;
-
+  font-weight: 500 !important;
+  font-size: 20px !important;
   opacity: 1;
+  color: red;
   &::placeholder {
-    font-weight: 500;
-    font-size: 20px;
-
-    color: #dcd7fe;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    color: #dcd7fe !important;
   }
   .placeholder {
-    font-weight: 500;
-    font-size: 20px;
-    color: #dcd7fe;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+
+    color: #dcd7fe !important;
   }
 `;
