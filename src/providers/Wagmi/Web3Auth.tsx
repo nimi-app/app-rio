@@ -10,7 +10,7 @@ const iconUrl = 'https://images.toruswallet.io/web3auth-logo-white.svg';
 export const rainbowWeb3AuthConnector = ({ chains }) => {
   // Create Web3Auth Instance
   const web3AuthInstance = new Web3Auth({
-    clientId: 'YOUR_CLIENT_ID',
+    clientId: 'BBqe-tBrNebLyPavpzgtfigqoTVfFnlv62j7bgar5zfbs9l_UvNF-DGD-yxue-lZUiWlresFXeaWkugCK1jCags',
     chainConfig: {
       chainNamespace: CHAIN_NAMESPACES.EIP155,
       chainId: '0x' + chains[0].id.toString(16),
