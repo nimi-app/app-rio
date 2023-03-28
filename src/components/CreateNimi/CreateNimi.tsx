@@ -130,7 +130,7 @@ export function CreateNimi({ ensAddress, ensName, availableThemes, initialNimi }
       const contentHash = `ipfs://${cid}`;
       const newContentHashEncoded = encodeContenthash(contentHash).encoded as unknown as string;
       const signature = await signMessage({
-        message: JSON.stringify({ contentHash: newContentHashEncoded }),
+        message: JSON.stringify({ contenthash: newContentHashEncoded }),
       });
       debug({ signature, contentHash });
       const domainsNameHash = ensNameHash(nimi.displayName);
