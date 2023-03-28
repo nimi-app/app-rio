@@ -1,11 +1,12 @@
 import { signMessage } from '@wagmi/core';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { Content, HeaderEyebrow, PageWrapper } from './styled';
 import { useClaimCodeVerification } from '../../api/RestAPI/hooks/useClaimCodeVerification';
 import { useNimiIdAvalibility } from '../../api/RestAPI/hooks/useNimiIdAvalibility';
+import { useNimiIdDomains } from '../../api/RestAPI/hooks/useNimiIdDomains';
 import { useRegisterNimiId } from '../../api/RestAPI/hooks/useRegisterNimiId';
 import { Button } from '../../components/Button';
 import { RainbowConnectButton } from '../../components/Button/ConnectButton';
@@ -30,9 +31,18 @@ export function Landing() {
   const { setSpinner, isSpinnerShown } = useUserInterface();
   const deboucedSearchValue = useDebounce(searchValue, 500);
 
+  const { data: nimiIdData, isLoading: nimiIdDataLoading } = useNimiIdDomains();
+
   const { data: isNameAvaliable, isLoading } = useNimiIdAvalibility(deboucedSearchValue);
   const { data: claimCodeData } = useClaimCodeVerification(claimCode as string);
   const { mutateAsync } = useRegisterNimiId();
+
+  useEffect(() => {
+    if (!nimiIdDataLoading && nimiIdData?.data.domains[0]) {
+      const registeredDomainName = nimiIdData.data.domains[0].name;
+      navigate(`domains/${registeredDomainName}`);
+    }
+  }, [nimiIdData, nimiIdDataLoading, navigate]);
 
   const onClaimHandler = async () => {
     setSpinner(true);
@@ -59,8 +69,8 @@ export function Landing() {
   };
 
   const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const nextSearchQuery = e.target.value.trim();
-    const regex = /^[a-zA-Z]+$/;
+    const nextSearchQuery = e.target.value.trim().toLocaleLowerCase();
+    const regex = /^[a-z0-9-]+$/;
     if (nextSearchQuery === '' || regex.test(nextSearchQuery)) {
       setSearchValue(nextSearchQuery);
     }
