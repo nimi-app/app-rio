@@ -1,6 +1,6 @@
 import { signMessage } from '@wagmi/core';
 import { useCallback, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { Content, HeaderEyebrow, PageWrapper } from './styled';
@@ -22,15 +22,16 @@ export const RIO_SUFIX = 'ethbr.co';
 
 export function Landing() {
   const navigate = useNavigate();
-  const { claimCode } = useParams();
+  const [params] = useSearchParams();
   const { account } = useRainbow();
+  const claimCode = params.get('code');
 
   const [searchValue, setSearchValue] = useState('');
   const { setSpinner, isSpinnerShown } = useUserInterface();
   const deboucedSearchValue = useDebounce(searchValue, 500);
 
   const { data: isNameAvaliable, isLoading } = useNimiIdAvalibility(deboucedSearchValue);
-  const { data: claimCodeData } = useClaimCodeVerification(claimCode);
+  const { data: claimCodeData } = useClaimCodeVerification(claimCode as string);
   const { mutateAsync } = useRegisterNimiId();
 
   const onClaimHandler = async () => {
