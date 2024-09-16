@@ -35,6 +35,7 @@ export type AbiChanged = ResolverEvent & {
 export type AbiChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<AbiChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -59,6 +60,7 @@ export type AbiChanged_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<AbiChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -97,6 +99,9 @@ export enum AbiChanged_OrderBy {
   ContentType = 'contentType',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -138,6 +143,7 @@ export type AccountWrappedDomainsArgs = {
 export type Account_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Account_Filter>>>;
   domains_?: InputMaybe<Domain_Filter>;
   id?: InputMaybe<Scalars['ID']>;
   id_gt?: InputMaybe<Scalars['ID']>;
@@ -147,6 +153,7 @@ export type Account_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<Account_Filter>>>;
   registrations_?: InputMaybe<Registration_Filter>;
   wrappedDomains_?: InputMaybe<WrappedDomain_Filter>;
 };
@@ -191,6 +198,7 @@ export type AddrChanged_Filter = {
   addr_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   addr_starts_with?: InputMaybe<Scalars['String']>;
   addr_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  and?: InputMaybe<Array<InputMaybe<AddrChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -207,6 +215,7 @@ export type AddrChanged_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<AddrChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -242,9 +251,13 @@ export type AddrChanged_Filter = {
 
 export enum AddrChanged_OrderBy {
   Addr = 'addr',
+  AddrId = 'addr__id',
   BlockNumber = 'blockNumber',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -262,6 +275,7 @@ export type AuthorisationChanged = ResolverEvent & {
 export type AuthorisationChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<AuthorisationChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -282,6 +296,7 @@ export type AuthorisationChanged_Filter = {
   isAuthorized_in?: InputMaybe<Array<Scalars['Boolean']>>;
   isAuthorized_not?: InputMaybe<Scalars['Boolean']>;
   isAuthorized_not_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  or?: InputMaybe<Array<InputMaybe<AuthorisationChanged_Filter>>>;
   owner?: InputMaybe<Scalars['Bytes']>;
   owner_contains?: InputMaybe<Scalars['Bytes']>;
   owner_gt?: InputMaybe<Scalars['Bytes']>;
@@ -341,6 +356,9 @@ export enum AuthorisationChanged_OrderBy {
   IsAuthorized = 'isAuthorized',
   Owner = 'owner',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   Target = 'target',
   TransactionId = 'transactionID'
 }
@@ -367,6 +385,7 @@ export type ContenthashChanged = ResolverEvent & {
 export type ContenthashChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<ContenthashChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -393,6 +412,7 @@ export type ContenthashChanged_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<ContenthashChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -431,6 +451,9 @@ export enum ContenthashChanged_OrderBy {
   Hash = 'hash',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -482,6 +505,7 @@ export type DomainEvent = {
 export type DomainEvent_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<DomainEvent_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -519,6 +543,7 @@ export type DomainEvent_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<DomainEvent_Filter>>>;
   transactionID?: InputMaybe<Scalars['Bytes']>;
   transactionID_contains?: InputMaybe<Scalars['Bytes']>;
   transactionID_gt?: InputMaybe<Scalars['Bytes']>;
@@ -534,6 +559,14 @@ export type DomainEvent_Filter = {
 export enum DomainEvent_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   TransactionId = 'transactionID'
 }
@@ -541,6 +574,7 @@ export enum DomainEvent_OrderBy {
 export type Domain_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Domain_Filter>>>;
   createdAt?: InputMaybe<Scalars['BigInt']>;
   createdAt_gt?: InputMaybe<Scalars['BigInt']>;
   createdAt_gte?: InputMaybe<Scalars['BigInt']>;
@@ -612,6 +646,7 @@ export type Domain_Filter = {
   name_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   name_starts_with?: InputMaybe<Scalars['String']>;
   name_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<Domain_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -726,14 +761,36 @@ export enum Domain_OrderBy {
   Labelhash = 'labelhash',
   Name = 'name',
   Owner = 'owner',
+  OwnerId = 'owner__id',
   Parent = 'parent',
+  ParentCreatedAt = 'parent__createdAt',
+  ParentId = 'parent__id',
+  ParentIsMigrated = 'parent__isMigrated',
+  ParentLabelName = 'parent__labelName',
+  ParentLabelhash = 'parent__labelhash',
+  ParentName = 'parent__name',
+  ParentSubdomainCount = 'parent__subdomainCount',
+  ParentTtl = 'parent__ttl',
   Registration = 'registration',
+  RegistrationCost = 'registration__cost',
+  RegistrationExpiryDate = 'registration__expiryDate',
+  RegistrationId = 'registration__id',
+  RegistrationLabelName = 'registration__labelName',
+  RegistrationRegistrationDate = 'registration__registrationDate',
   ResolvedAddress = 'resolvedAddress',
+  ResolvedAddressId = 'resolvedAddress__id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   SubdomainCount = 'subdomainCount',
   Subdomains = 'subdomains',
   Ttl = 'ttl',
-  WrappedDomain = 'wrappedDomain'
+  WrappedDomain = 'wrappedDomain',
+  WrappedDomainExpiryDate = 'wrappedDomain__expiryDate',
+  WrappedDomainFuses = 'wrappedDomain__fuses',
+  WrappedDomainId = 'wrappedDomain__id',
+  WrappedDomainLabelName = 'wrappedDomain__labelName'
 }
 
 export type FusesSet = DomainEvent & {
@@ -749,6 +806,7 @@ export type FusesSet = DomainEvent & {
 export type FusesSet_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<FusesSet_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -802,6 +860,7 @@ export type FusesSet_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<FusesSet_Filter>>>;
   transactionID?: InputMaybe<Scalars['Bytes']>;
   transactionID_contains?: InputMaybe<Scalars['Bytes']>;
   transactionID_gt?: InputMaybe<Scalars['Bytes']>;
@@ -817,6 +876,14 @@ export type FusesSet_Filter = {
 export enum FusesSet_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Expiry = 'expiry',
   Fuses = 'fuses',
   Id = 'id',
@@ -836,6 +903,7 @@ export type InterfaceChanged = ResolverEvent & {
 export type InterfaceChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<InterfaceChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -872,6 +940,7 @@ export type InterfaceChanged_Filter = {
   interfaceID_not?: InputMaybe<Scalars['Bytes']>;
   interfaceID_not_contains?: InputMaybe<Scalars['Bytes']>;
   interfaceID_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  or?: InputMaybe<Array<InputMaybe<InterfaceChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -911,6 +980,9 @@ export enum InterfaceChanged_OrderBy {
   Implementer = 'implementer',
   InterfaceId = 'interfaceID',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -937,6 +1009,7 @@ export type MulticoinAddrChanged_Filter = {
   addr_not?: InputMaybe<Scalars['Bytes']>;
   addr_not_contains?: InputMaybe<Scalars['Bytes']>;
   addr_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  and?: InputMaybe<Array<InputMaybe<MulticoinAddrChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -961,6 +1034,7 @@ export type MulticoinAddrChanged_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<MulticoinAddrChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -1000,6 +1074,9 @@ export enum MulticoinAddrChanged_OrderBy {
   CoinType = 'coinType',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -1015,6 +1092,7 @@ export type NameChanged = ResolverEvent & {
 export type NameChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NameChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1051,6 +1129,7 @@ export type NameChanged_Filter = {
   name_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   name_starts_with?: InputMaybe<Scalars['String']>;
   name_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<NameChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -1089,6 +1168,9 @@ export enum NameChanged_OrderBy {
   Id = 'id',
   Name = 'name',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -1105,6 +1187,7 @@ export type NameRegistered = RegistrationEvent & {
 export type NameRegistered_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NameRegistered_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1129,6 +1212,7 @@ export type NameRegistered_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<NameRegistered_Filter>>>;
   registrant?: InputMaybe<Scalars['String']>;
   registrant_?: InputMaybe<Account_Filter>;
   registrant_contains?: InputMaybe<Scalars['String']>;
@@ -1188,7 +1272,13 @@ export enum NameRegistered_OrderBy {
   ExpiryDate = 'expiryDate',
   Id = 'id',
   Registrant = 'registrant',
+  RegistrantId = 'registrant__id',
   Registration = 'registration',
+  RegistrationCost = 'registration__cost',
+  RegistrationExpiryDate = 'registration__expiryDate',
+  RegistrationId = 'registration__id',
+  RegistrationLabelName = 'registration__labelName',
+  RegistrationRegistrationDate = 'registration__registrationDate',
   TransactionId = 'transactionID'
 }
 
@@ -1204,6 +1294,7 @@ export type NameRenewed = RegistrationEvent & {
 export type NameRenewed_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NameRenewed_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1228,6 +1319,7 @@ export type NameRenewed_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<NameRenewed_Filter>>>;
   registration?: InputMaybe<Scalars['String']>;
   registration_?: InputMaybe<Registration_Filter>;
   registration_contains?: InputMaybe<Scalars['String']>;
@@ -1266,6 +1358,11 @@ export enum NameRenewed_OrderBy {
   ExpiryDate = 'expiryDate',
   Id = 'id',
   Registration = 'registration',
+  RegistrationCost = 'registration__cost',
+  RegistrationExpiryDate = 'registration__expiryDate',
+  RegistrationId = 'registration__id',
+  RegistrationLabelName = 'registration__labelName',
+  RegistrationRegistrationDate = 'registration__registrationDate',
   TransactionId = 'transactionID'
 }
 
@@ -1281,6 +1378,7 @@ export type NameTransferred = RegistrationEvent & {
 export type NameTransferred_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NameTransferred_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1318,6 +1416,7 @@ export type NameTransferred_Filter = {
   newOwner_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   newOwner_starts_with?: InputMaybe<Scalars['String']>;
   newOwner_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<NameTransferred_Filter>>>;
   registration?: InputMaybe<Scalars['String']>;
   registration_?: InputMaybe<Registration_Filter>;
   registration_contains?: InputMaybe<Scalars['String']>;
@@ -1355,7 +1454,13 @@ export enum NameTransferred_OrderBy {
   BlockNumber = 'blockNumber',
   Id = 'id',
   NewOwner = 'newOwner',
+  NewOwnerId = 'newOwner__id',
   Registration = 'registration',
+  RegistrationCost = 'registration__cost',
+  RegistrationExpiryDate = 'registration__expiryDate',
+  RegistrationId = 'registration__id',
+  RegistrationLabelName = 'registration__labelName',
+  RegistrationRegistrationDate = 'registration__registrationDate',
   TransactionId = 'transactionID'
 }
 
@@ -1371,6 +1476,7 @@ export type NameUnwrapped = DomainEvent & {
 export type NameUnwrapped_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NameUnwrapped_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1408,6 +1514,7 @@ export type NameUnwrapped_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<NameUnwrapped_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -1444,8 +1551,17 @@ export type NameUnwrapped_Filter = {
 export enum NameUnwrapped_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   Owner = 'owner',
+  OwnerId = 'owner__id',
   TransactionId = 'transactionID'
 }
 
@@ -1464,6 +1580,7 @@ export type NameWrapped = DomainEvent & {
 export type NameWrapped_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NameWrapped_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1537,6 +1654,7 @@ export type NameWrapped_Filter = {
   name_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   name_starts_with?: InputMaybe<Scalars['String']>;
   name_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<NameWrapped_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -1573,11 +1691,20 @@ export type NameWrapped_Filter = {
 export enum NameWrapped_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Expiry = 'expiry',
   Fuses = 'fuses',
   Id = 'id',
   Name = 'name',
   Owner = 'owner',
+  OwnerId = 'owner__id',
   TransactionId = 'transactionID'
 }
 
@@ -1594,6 +1721,7 @@ export type NewOwner = DomainEvent & {
 export type NewOwner_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NewOwner_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1631,6 +1759,7 @@ export type NewOwner_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<NewOwner_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -1688,9 +1817,26 @@ export type NewOwner_Filter = {
 export enum NewOwner_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   Owner = 'owner',
+  OwnerId = 'owner__id',
   ParentDomain = 'parentDomain',
+  ParentDomainCreatedAt = 'parentDomain__createdAt',
+  ParentDomainId = 'parentDomain__id',
+  ParentDomainIsMigrated = 'parentDomain__isMigrated',
+  ParentDomainLabelName = 'parentDomain__labelName',
+  ParentDomainLabelhash = 'parentDomain__labelhash',
+  ParentDomainName = 'parentDomain__name',
+  ParentDomainSubdomainCount = 'parentDomain__subdomainCount',
+  ParentDomainTtl = 'parentDomain__ttl',
   TransactionId = 'transactionID'
 }
 
@@ -1706,6 +1852,7 @@ export type NewResolver = DomainEvent & {
 export type NewResolver_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NewResolver_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1743,6 +1890,7 @@ export type NewResolver_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<NewResolver_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -1779,8 +1927,19 @@ export type NewResolver_Filter = {
 export enum NewResolver_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -1796,6 +1955,7 @@ export type NewTtl = DomainEvent & {
 export type NewTtl_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NewTtl_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1833,6 +1993,7 @@ export type NewTtl_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<NewTtl_Filter>>>;
   transactionID?: InputMaybe<Scalars['Bytes']>;
   transactionID_contains?: InputMaybe<Scalars['Bytes']>;
   transactionID_gt?: InputMaybe<Scalars['Bytes']>;
@@ -1856,6 +2017,14 @@ export type NewTtl_Filter = {
 export enum NewTtl_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   TransactionId = 'transactionID',
   Ttl = 'ttl'
@@ -1880,6 +2049,7 @@ export type PubkeyChanged = ResolverEvent & {
 export type PubkeyChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<PubkeyChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -1896,6 +2066,7 @@ export type PubkeyChanged_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<PubkeyChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -1953,6 +2124,9 @@ export enum PubkeyChanged_OrderBy {
   BlockNumber = 'blockNumber',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID',
   X = 'x',
   Y = 'y'
@@ -2580,6 +2754,7 @@ export type RegistrationEvent = {
 export type RegistrationEvent_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<RegistrationEvent_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -2596,6 +2771,7 @@ export type RegistrationEvent_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<RegistrationEvent_Filter>>>;
   registration?: InputMaybe<Scalars['String']>;
   registration_?: InputMaybe<Registration_Filter>;
   registration_contains?: InputMaybe<Scalars['String']>;
@@ -2633,12 +2809,18 @@ export enum RegistrationEvent_OrderBy {
   BlockNumber = 'blockNumber',
   Id = 'id',
   Registration = 'registration',
+  RegistrationCost = 'registration__cost',
+  RegistrationExpiryDate = 'registration__expiryDate',
+  RegistrationId = 'registration__id',
+  RegistrationLabelName = 'registration__labelName',
+  RegistrationRegistrationDate = 'registration__registrationDate',
   TransactionId = 'transactionID'
 }
 
 export type Registration_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Registration_Filter>>>;
   cost?: InputMaybe<Scalars['BigInt']>;
   cost_gt?: InputMaybe<Scalars['BigInt']>;
   cost_gte?: InputMaybe<Scalars['BigInt']>;
@@ -2705,6 +2887,7 @@ export type Registration_Filter = {
   labelName_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   labelName_starts_with?: InputMaybe<Scalars['String']>;
   labelName_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<Registration_Filter>>>;
   registrant?: InputMaybe<Scalars['String']>;
   registrant_?: InputMaybe<Account_Filter>;
   registrant_contains?: InputMaybe<Scalars['String']>;
@@ -2739,11 +2922,20 @@ export type Registration_Filter = {
 export enum Registration_OrderBy {
   Cost = 'cost',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Events = 'events',
   ExpiryDate = 'expiryDate',
   Id = 'id',
   LabelName = 'labelName',
   Registrant = 'registrant',
+  RegistrantId = 'registrant__id',
   RegistrationDate = 'registrationDate'
 }
 
@@ -2778,6 +2970,7 @@ export type ResolverEvent = {
 export type ResolverEvent_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<ResolverEvent_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -2794,6 +2987,7 @@ export type ResolverEvent_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<ResolverEvent_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -2831,6 +3025,9 @@ export enum ResolverEvent_OrderBy {
   BlockNumber = 'blockNumber',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID'
 }
 
@@ -2868,6 +3065,7 @@ export type Resolver_Filter = {
   address_not?: InputMaybe<Scalars['Bytes']>;
   address_not_contains?: InputMaybe<Scalars['Bytes']>;
   address_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  and?: InputMaybe<Array<InputMaybe<Resolver_Filter>>>;
   coinTypes?: InputMaybe<Array<Scalars['BigInt']>>;
   coinTypes_contains?: InputMaybe<Array<Scalars['BigInt']>>;
   coinTypes_contains_nocase?: InputMaybe<Array<Scalars['BigInt']>>;
@@ -2914,6 +3112,7 @@ export type Resolver_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<Resolver_Filter>>>;
   texts?: InputMaybe<Array<Scalars['String']>>;
   texts_contains?: InputMaybe<Array<Scalars['String']>>;
   texts_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
@@ -2924,10 +3123,19 @@ export type Resolver_Filter = {
 
 export enum Resolver_OrderBy {
   Addr = 'addr',
+  AddrId = 'addr__id',
   Address = 'address',
   CoinTypes = 'coinTypes',
   ContentHash = 'contentHash',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Events = 'events',
   Id = 'id',
   Texts = 'texts'
@@ -3537,6 +3745,7 @@ export type TextChanged = ResolverEvent & {
 export type TextChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<TextChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -3573,6 +3782,7 @@ export type TextChanged_Filter = {
   key_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   key_starts_with?: InputMaybe<Scalars['String']>;
   key_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<TextChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -3631,6 +3841,9 @@ export enum TextChanged_OrderBy {
   Id = 'id',
   Key = 'key',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID',
   Value = 'value'
 }
@@ -3647,6 +3860,7 @@ export type Transfer = DomainEvent & {
 export type Transfer_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Transfer_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -3684,6 +3898,7 @@ export type Transfer_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<Transfer_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -3720,8 +3935,17 @@ export type Transfer_Filter = {
 export enum Transfer_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   Owner = 'owner',
+  OwnerId = 'owner__id',
   TransactionId = 'transactionID'
 }
 
@@ -3737,6 +3961,7 @@ export type VersionChanged = ResolverEvent & {
 export type VersionChanged_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<VersionChanged_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -3753,6 +3978,7 @@ export type VersionChanged_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<VersionChanged_Filter>>>;
   resolver?: InputMaybe<Scalars['String']>;
   resolver_?: InputMaybe<Resolver_Filter>;
   resolver_contains?: InputMaybe<Scalars['String']>;
@@ -3798,6 +4024,9 @@ export enum VersionChanged_OrderBy {
   BlockNumber = 'blockNumber',
   Id = 'id',
   Resolver = 'resolver',
+  ResolverAddress = 'resolver__address',
+  ResolverContentHash = 'resolver__contentHash',
+  ResolverId = 'resolver__id',
   TransactionId = 'transactionID',
   Version = 'version'
 }
@@ -3815,6 +4044,7 @@ export type WrappedDomain = {
 export type WrappedDomain_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<WrappedDomain_Filter>>>;
   domain?: InputMaybe<Scalars['String']>;
   domain_?: InputMaybe<Domain_Filter>;
   domain_contains?: InputMaybe<Scalars['String']>;
@@ -3880,6 +4110,7 @@ export type WrappedDomain_Filter = {
   labelName_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
   labelName_starts_with?: InputMaybe<Scalars['String']>;
   labelName_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<InputMaybe<WrappedDomain_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -3905,11 +4136,20 @@ export type WrappedDomain_Filter = {
 
 export enum WrappedDomain_OrderBy {
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   ExpiryDate = 'expiryDate',
   Fuses = 'fuses',
   Id = 'id',
   LabelName = 'labelName',
-  Owner = 'owner'
+  Owner = 'owner',
+  OwnerId = 'owner__id'
 }
 
 export type WrappedTransfer = DomainEvent & {
@@ -3924,6 +4164,7 @@ export type WrappedTransfer = DomainEvent & {
 export type WrappedTransfer_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<WrappedTransfer_Filter>>>;
   blockNumber?: InputMaybe<Scalars['Int']>;
   blockNumber_gt?: InputMaybe<Scalars['Int']>;
   blockNumber_gte?: InputMaybe<Scalars['Int']>;
@@ -3961,6 +4202,7 @@ export type WrappedTransfer_Filter = {
   id_lte?: InputMaybe<Scalars['ID']>;
   id_not?: InputMaybe<Scalars['ID']>;
   id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  or?: InputMaybe<Array<InputMaybe<WrappedTransfer_Filter>>>;
   owner?: InputMaybe<Scalars['String']>;
   owner_?: InputMaybe<Account_Filter>;
   owner_contains?: InputMaybe<Scalars['String']>;
@@ -3997,8 +4239,17 @@ export type WrappedTransfer_Filter = {
 export enum WrappedTransfer_OrderBy {
   BlockNumber = 'blockNumber',
   Domain = 'domain',
+  DomainCreatedAt = 'domain__createdAt',
+  DomainId = 'domain__id',
+  DomainIsMigrated = 'domain__isMigrated',
+  DomainLabelName = 'domain__labelName',
+  DomainLabelhash = 'domain__labelhash',
+  DomainName = 'domain__name',
+  DomainSubdomainCount = 'domain__subdomainCount',
+  DomainTtl = 'domain__ttl',
   Id = 'id',
   Owner = 'owner',
+  OwnerId = 'owner__id',
   TransactionId = 'transactionID'
 }
 

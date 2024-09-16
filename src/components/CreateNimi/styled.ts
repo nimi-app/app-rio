@@ -61,11 +61,13 @@ export const PreviewContent = styled.aside<{ showMobile: boolean }>`
 `;
 
 export const PageSectionTitle = styled.h1`
-  ${NimiSignatureColor};
-  font-size: 36px;
-  line-height: 39px;
-  margin-bottom: 24px;
+  color: #5625ff;
+  font-size: 32px;
+  line-height: 47px;
   letter-spacing: -0.02em;
+  font-weight: 700;
+  margin-bottom: 24px;
+
   @media (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
     text-align: center;
   }

@@ -1,33 +1,56 @@
-import { Link } from 'react-router-dom';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import { ReactComponent as NimiLogo } from '../../assets/svg/nimi-logo-text.svg';
+import { ReactComponent as RioLogo } from '../../assets/images/ethereum-rio-big.svg';
 import { HEADER_HEIGHT, MEDIA_WIDTHS } from '../../theme';
-import { Web3Status } from '../Web3Status';
 
 export function Header() {
+  const navigate = useNavigate();
   return (
     <Container>
-      <Content>
-        <Link to="/domains/all">
-          <NimiLogo width="100px" height="40px" />
-        </Link>
-        <Web3Status />
-      </Content>
+      <HeaderStyle>
+        <HeaderLogo onClick={() => navigate('/')} />
+        <ConnectButton chainStatus={'none'} accountStatus={'full'} showBalance={false} label="Connect Wallet" />
+      </HeaderStyle>
     </Container>
   );
 }
+export const HeaderStyle = styled.header`
+  display: flex;
+  margin-top: 24px;
+  flex-grow: 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  //select first child
+  > *:first-child {
+    margin-right: 544px;
+  }
+
+  @media (max-width: 1025px) {
+    > *:first-child {
+      margin-right: 0;
+    }
+    justify-content: space-between;
+  }
+`;
+
+const HeaderLogo = styled(RioLogo)`
+  cursor: pointer;
+`;
 
 const Container = styled.header`
   width: 100%;
-`;
-
-const Content = styled.div`
   max-width: ${MEDIA_WIDTHS.upToMedium}px;
   height: ${HEADER_HEIGHT};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 0;
   margin: 0 auto;
+  margin-bottom: 62px;
+  padding: 0 20px;
 `;
+
+const Content = styled.div``;

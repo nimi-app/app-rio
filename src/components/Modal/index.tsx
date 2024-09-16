@@ -71,6 +71,21 @@ export function Modal({
 
   const { setSpinner } = useUserInterface();
 
+  //if users click back on browser it will close modal instead of going step back
+  useEffect(() => {
+    // Push a new entry into the browser's history when the modal is opened
+    window.history.pushState(null, '', window.location.pathname);
+
+    // Listen for the popstate event
+    window.addEventListener('popstate', handleCloseModal);
+
+    return () => {
+      // Remove the popstate event listener when the component unmounts
+      window.removeEventListener('popstate', handleCloseModal);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     modalContainer.classList.add('modal-root');
     document.body.appendChild(modalContainer);
@@ -107,6 +122,9 @@ const Backdrop = styled.div`
   padding-top: 40px;
   padding-left: 16px;
   padding-right: 16px;
+  * {
+    font-family: 'Archivo';
+  }
 `;
 
 const StyledModal = styled(motion.div)<{ maxWidth: string; maxHeight: string }>`

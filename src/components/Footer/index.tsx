@@ -1,34 +1,87 @@
 import { styled } from 'styled-components';
 
-import GitHubLogo from '../../assets/svg/github-logo.svg';
-import Twitter from '../../assets/svg/twitter-logo.svg';
-import { ExternalLink, FOOTER_HEIGHT, MEDIA_WIDTHS } from '../../theme';
+import BrasilPng from '../../assets/rio/brasilFooter.png';
+import { ReactComponent as Ens } from '../../assets/rio/ensFooter.svg';
+import NimiPng from '../../assets/rio/nimiFooter.png';
+import { FOOTER_HEIGHT, MEDIA_WIDTHS } from '../../theme';
+
+enum LinkType {
+  NIMI,
+  ENS,
+  BRASIL,
+}
 
 export function Footer() {
+  const handleImageClick = (link: LinkType) => {
+    switch (link) {
+      case LinkType.NIMI:
+        window.open('https://www.nimi.io/', '_blank');
+        break;
+      case LinkType.ENS:
+        window.open('https://ens.domains/', '_blank');
+        break;
+      case LinkType.BRASIL:
+        window.open('https://www.ethereumbrasil.com/', '_blank');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <Container>
       <Content>
-        <Paragraph>
-          Nimi.eth |&nbsp;<a href="https://amsterdam.ethglobal.com/">ETHAmsterdam 2022 Hackathon</a>&nbsp;winners
-        </Paragraph>
-        <Navigation>
-          <ExternalLink title="Nimi on Twitter" href="https://twitter.com/0xNimi">
-            <img src={Twitter} alt="Twitter Logo" />
-          </ExternalLink>
-          <ExternalLink title="Nimi on GitHub" href="https://github.com/nimi-app">
-            <StyledImg src={GitHubLogo} />
-          </ExternalLink>
-        </Navigation>
+        <Paragraph>Powered by</Paragraph>
+        <SponsorWrapper>
+          <StyledNimi onClick={() => handleImageClick(LinkType.NIMI)}>
+            <img src={NimiPng} />
+          </StyledNimi>
+          <StyledBrasil onClick={() => handleImageClick(LinkType.BRASIL)}>
+            <img src={BrasilPng} />
+          </StyledBrasil>
+
+          <Ens onClick={() => handleImageClick(LinkType.ENS)} />
+        </SponsorWrapper>
       </Content>
     </Container>
   );
 }
 
+const StyledNimi = styled.div`
+  width: 100px;
+  height: 27px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 500px) {
+    width: 88px;
+    height: 24px;
+  }
+`;
+const StyledBrasil = styled.div`
+  width: 155px;
+  height: 40px;
+  @media (max-width: 500px) {
+    width: 135px;
+    height: 35px;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
+const SponsorWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 29px;
+  cursor: pointer;
+`;
 const Container = styled.footer`
   width: 100%;
-`;
-const StyledImg = styled.img`
-  fill: #1f3e4f;
+  margin-bottom: 20px;
+  margin-top: 91px;
 `;
 
 const Content = styled.div`
@@ -36,26 +89,20 @@ const Content = styled.div`
   width: 100%;
   height: ${FOOTER_HEIGHT};
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   margin: 0 auto;
-
-  @media (max-width: ${MEDIA_WIDTHS.upToSmall}px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `;
 
 const Paragraph = styled.p`
   display: inline-block;
   line-height: 24px;
   text-align: left;
-`;
-
-const Navigation = styled.nav`
-  height: 24px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  color: #9f84ff;
+  font-family: 'Space Mono';
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.06em;
 `;

@@ -1,5 +1,5 @@
 import { Chain, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { CreateNimiPage } from './CreateNimiPage/CreateNimiPage';
 import DomainsHomePage from './DomainsHome';
@@ -26,10 +26,6 @@ const router = createBrowserRouter([
         element: <CreateNimiPage />,
       },
     ],
-  },
-  {
-    path: '*',
-    element: <Navigate to="/" />,
   },
 ]);
 

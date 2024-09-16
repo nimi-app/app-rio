@@ -4,14 +4,13 @@ import { styled } from 'styled-components';
 export const StyledWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  height: 48px;
-  width: 48px;
-  min-width: 48px;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
   border-radius: 50%;
 `;
 
 const StyledAvatarPlaceholder = styled.div`
-  background: linear-gradient(111.35deg, #4368ea -25.85%, #c490dd 73.38%);
   border: 2px solid #ffffff;
   width: 100%;
   height: 100%;

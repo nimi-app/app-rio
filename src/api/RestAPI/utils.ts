@@ -31,6 +31,12 @@ export function getNimiAPIClient() {
   });
 }
 
+export function getNimiIdApiClient() {
+  return axios.create({
+    baseURL: 'https://api.nimi.id',
+  });
+}
+
 const IPFS_GATEWAY = 'https://ipfs.io/ipfs/';
 
 function isCID(hash: string) {

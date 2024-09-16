@@ -208,11 +208,11 @@ html {
 }
 
 html, body, input, label, textarea, button {
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Space Mono', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Space Mono', sans-serif;
 }
 
 p {
